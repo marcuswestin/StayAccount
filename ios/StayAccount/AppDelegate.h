@@ -1,5 +1,5 @@
-#import "BlowTorchAppDelegate.h"
+#import "BlowTorch.h"
 
-@interface AppDelegate : BlowTorchAppDelegate
+@interface AppDelegate : BlowTorchAppDelegate 
 
 @end

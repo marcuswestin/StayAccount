@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C0E70BC1426D10800308838 /* BlowTorchAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E70BA1426D10800308838 /* BlowTorchAppDelegate.m */; };
-		2C0E70BD1426D10800308838 /* WebViewJavascriptBridge in Resources */ = {isa = PBXBuildFile; fileRef = 2C0E70BB1426D10800308838 /* WebViewJavascriptBridge */; };
+		2C0E70C21426D6E200308838 /* BlowTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E70C11426D6E200308838 /* BlowTorch.m */; };
+		2C0E70C81426DB3800308838 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E70C61426DB2B00308838 /* JSONKit.m */; settings = {COMPILER_FLAGS = "\"-fno-objc-arc\""; }; };
+		2C0E70CB1426DB4B00308838 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E70CA1426DB4B00308838 /* WebViewJavascriptBridge.m */; };
 		2CE94A251426BF16004D82DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE94A241426BF16004D82DC /* UIKit.framework */; };
 		2CE94A271426BF16004D82DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE94A261426BF16004D82DC /* Foundation.framework */; };
 		2CE94A2D1426BF16004D82DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CE94A2B1426BF16004D82DC /* InfoPlist.strings */; };
@@ -16,10 +17,25 @@
 		2CE94A331426BF16004D82DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE94A321426BF16004D82DC /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C0E70CC1426DCAB00308838 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		2C0E70B91426D10800308838 /* BlowTorchAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowTorchAppDelegate.h; path = ../../../blowtorch/ios/BlowTorchAppDelegate.h; sourceTree = "<group>"; };
-		2C0E70BA1426D10800308838 /* BlowTorchAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowTorchAppDelegate.m; path = ../../../blowtorch/ios/BlowTorchAppDelegate.m; sourceTree = "<group>"; };
-		2C0E70BB1426D10800308838 /* WebViewJavascriptBridge */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WebViewJavascriptBridge; path = ../../../blowtorch/ios/WebViewJavascriptBridge; sourceTree = "<group>"; };
+		2C0E70C01426D6E200308838 /* BlowTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowTorch.h; path = ../../../blowtorch/ios/BlowTorch.h; sourceTree = "<group>"; };
+		2C0E70C11426D6E200308838 /* BlowTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowTorch.m; path = ../../../blowtorch/ios/BlowTorch.m; sourceTree = "<group>"; };
+		2C0E70C51426DB2B00308838 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../../../blowtorch/ios/JSONKit/JSONKit.h; sourceTree = "<group>"; };
+		2C0E70C61426DB2B00308838 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../../../blowtorch/ios/JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		2C0E70C91426DB4B00308838 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewJavascriptBridge.h; path = ../../../blowtorch/ios/WebViewJavascriptBridge/WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		2C0E70CA1426DB4B00308838 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewJavascriptBridge.m; path = ../../../blowtorch/ios/WebViewJavascriptBridge/WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		2CE94A201426BF16004D82DC /* StayAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE94A241426BF16004D82DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CE94A261426BF16004D82DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,9 +63,12 @@
 		2C2AF22F1426C1B600374651 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				2C0E70B91426D10800308838 /* BlowTorchAppDelegate.h */,
-				2C0E70BA1426D10800308838 /* BlowTorchAppDelegate.m */,
-				2C0E70BB1426D10800308838 /* WebViewJavascriptBridge */,
+				2C0E70C01426D6E200308838 /* BlowTorch.h */,
+				2C0E70C11426D6E200308838 /* BlowTorch.m */,
+				2C0E70C51426DB2B00308838 /* JSONKit.h */,
+				2C0E70C61426DB2B00308838 /* JSONKit.m */,
+				2C0E70C91426DB4B00308838 /* WebViewJavascriptBridge.h */,
+				2C0E70CA1426DB4B00308838 /* WebViewJavascriptBridge.m */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -112,6 +131,7 @@
 				2CE94A1C1426BF16004D82DC /* Sources */,
 				2CE94A1D1426BF16004D82DC /* Frameworks */,
 				2CE94A1E1426BF16004D82DC /* Resources */,
+				2C0E70CC1426DCAB00308838 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -154,7 +174,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE94A2D1426BF16004D82DC /* InfoPlist.strings in Resources */,
-				2C0E70BD1426D10800308838 /* WebViewJavascriptBridge in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,9 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C0E70C81426DB3800308838 /* JSONKit.m in Sources */,
 				2CE94A2F1426BF16004D82DC /* main.m in Sources */,
 				2CE94A331426BF16004D82DC /* AppDelegate.m in Sources */,
-				2C0E70BC1426D10800308838 /* BlowTorchAppDelegate.m in Sources */,
+				2C0E70C21426D6E200308838 /* BlowTorch.m in Sources */,
+				2C0E70CB1426DB4B00308838 /* WebViewJavascriptBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
