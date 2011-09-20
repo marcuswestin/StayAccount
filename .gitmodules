@@ -1,0 +1,3 @@
+[submodule "blowtorch"]
+	path = blowtorch
+	url = git@github.com:marcuswestin/blowtorch.git
