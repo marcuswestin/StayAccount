@@ -7,15 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C3C74E314282A0E00E7E63C /* BlowTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C74DC14282A0E00E7E63C /* BlowTorch.m */; };
-		2C3C74E414282A0E00E7E63C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C74DF14282A0E00E7E63C /* JSONKit.m */; settings = {COMPILER_FLAGS = "\"-fno-objc-arc\""; }; };
-		2C3C74E514282A0E00E7E63C /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C74E214282A0E00E7E63C /* WebViewJavascriptBridge.m */; };
+		2C383557142976EF00528D15 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C383556142976EF00528D15 /* libsqlite3.0.dylib */; };
 		2CE94A251426BF16004D82DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE94A241426BF16004D82DC /* UIKit.framework */; };
 		2CE94A271426BF16004D82DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE94A261426BF16004D82DC /* Foundation.framework */; };
 		2CE94A2D1426BF16004D82DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CE94A2B1426BF16004D82DC /* InfoPlist.strings */; };
 		2CE94A2F1426BF16004D82DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE94A2E1426BF16004D82DC /* main.m */; };
 		2CE94A331426BF16004D82DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE94A321426BF16004D82DC /* AppDelegate.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C580BE4142ED50D001BEF1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C580BDC142ED50D001BEF1A /* BlowTorch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C580BA6142EC836001BEF1A;
+			remoteInfo = BlowTorch;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2C0E70CC1426DCAB00308838 /* CopyFiles */ = {
@@ -30,12 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C3C74DB14282A0E00E7E63C /* BlowTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowTorch.h; path = ../../../blowtorch/ios/BlowTorch.h; sourceTree = "<group>"; };
-		2C3C74DC14282A0E00E7E63C /* BlowTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowTorch.m; path = ../../../blowtorch/ios/BlowTorch.m; sourceTree = "<group>"; };
-		2C3C74DE14282A0E00E7E63C /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		2C3C74DF14282A0E00E7E63C /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		2C3C74E114282A0E00E7E63C /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
-		2C3C74E214282A0E00E7E63C /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		2C383556142976EF00528D15 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		2C580BDC142ED50D001BEF1A /* BlowTorch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlowTorch.xcodeproj; path = ../dependencies/BlowTorch/ios/BlowTorch.xcodeproj; sourceTree = "<group>"; };
 		2CE94A201426BF16004D82DC /* StayAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE94A241426BF16004D82DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CE94A261426BF16004D82DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C383557142976EF00528D15 /* libsqlite3.0.dylib in Frameworks */,
 				2CE94A251426BF16004D82DC /* UIKit.framework in Frameworks */,
 				2CE94A271426BF16004D82DC /* Foundation.framework in Frameworks */,
 			);
@@ -60,41 +65,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C2AF22F1426C1B600374651 /* External */ = {
+		2C580BDA142ED3C6001BEF1A /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				2C3C74DB14282A0E00E7E63C /* BlowTorch.h */,
-				2C3C74DC14282A0E00E7E63C /* BlowTorch.m */,
-				2C3C74DD14282A0E00E7E63C /* JSONKit */,
-				2C3C74E014282A0E00E7E63C /* WebViewJavascriptBridge */,
+				2C580BDC142ED50D001BEF1A /* BlowTorch.xcodeproj */,
 			);
-			name = External;
+			name = Dependencies;
 			sourceTree = "<group>";
 		};
-		2C3C74DD14282A0E00E7E63C /* JSONKit */ = {
+		2C580BDD142ED50D001BEF1A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C3C74DE14282A0E00E7E63C /* JSONKit.h */,
-				2C3C74DF14282A0E00E7E63C /* JSONKit.m */,
+				2C580BE5142ED50D001BEF1A /* BlowTorch.app */,
 			);
-			name = JSONKit;
-			path = ../../../blowtorch/ios/JSONKit;
-			sourceTree = "<group>";
-		};
-		2C3C74E014282A0E00E7E63C /* WebViewJavascriptBridge */ = {
-			isa = PBXGroup;
-			children = (
-				2C3C74E114282A0E00E7E63C /* WebViewJavascriptBridge.h */,
-				2C3C74E214282A0E00E7E63C /* WebViewJavascriptBridge.m */,
-			);
-			name = WebViewJavascriptBridge;
-			path = ../../../blowtorch/ios/WebViewJavascriptBridge;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		2CE94A151426BF16004D82DC = {
 			isa = PBXGroup;
 			children = (
+				2C383556142976EF00528D15 /* libsqlite3.0.dylib */,
 				2CE94A281426BF16004D82DC /* StayAccount */,
+				2C580BDA142ED3C6001BEF1A /* Dependencies */,
 				2CE94A231426BF16004D82DC /* Frameworks */,
 				2CE94A211426BF16004D82DC /* Products */,
 			);
@@ -122,7 +114,6 @@
 			children = (
 				2CE94A311426BF16004D82DC /* AppDelegate.h */,
 				2CE94A321426BF16004D82DC /* AppDelegate.m */,
-				2C2AF22F1426C1B600374651 /* External */,
 				2CE94A291426BF16004D82DC /* Supporting Files */,
 			);
 			path = StayAccount;
@@ -179,12 +170,28 @@
 			mainGroup = 2CE94A151426BF16004D82DC;
 			productRefGroup = 2CE94A211426BF16004D82DC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2C580BDD142ED50D001BEF1A /* Products */;
+					ProjectRef = 2C580BDC142ED50D001BEF1A /* BlowTorch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2CE94A1F1426BF16004D82DC /* StayAccount */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2C580BE5142ED50D001BEF1A /* BlowTorch.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = BlowTorch.app;
+			remoteRef = 2C580BE4142ED50D001BEF1A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2CE94A1E1426BF16004D82DC /* Resources */ = {
@@ -204,9 +211,6 @@
 			files = (
 				2CE94A2F1426BF16004D82DC /* main.m in Sources */,
 				2CE94A331426BF16004D82DC /* AppDelegate.m in Sources */,
-				2C3C74E314282A0E00E7E63C /* BlowTorch.m in Sources */,
-				2C3C74E414282A0E00E7E63C /* JSONKit.m in Sources */,
-				2C3C74E514282A0E00E7E63C /* WebViewJavascriptBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,16 @@
 #import "AppDelegate.h"
+#import "Storage.h"
 
 @implementation AppDelegate
+
+@synthesize storage;
+
+/* Blow torch app lifecycle
+ **************************/
+
+- (void) blowTorchSetup {
+    storage = [Storage open];
+}
 
 - (void)handleCommand:(NSString *)command withData:(NSDictionary *)data andCallbackID:(NSString *)callbackID {
     NSLog(@"handleCommand %@ %@ %@", command, data, callbackID);
