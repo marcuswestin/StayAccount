@@ -1,1 +1,7 @@
+NOW
 fix the BlowTorch git submodule reference
+execute sql from the webview and get results back
+create schema in the js
+
+LATER
+schema migrations
