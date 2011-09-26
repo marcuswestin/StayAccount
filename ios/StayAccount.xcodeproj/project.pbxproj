@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2C383557142976EF00528D15 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C383556142976EF00528D15 /* libsqlite3.0.dylib */; };
+		2C6D2129142FDF1E0069FA34 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D2128142FDF1E0069FA34 /* WebViewJavascriptBridge.m */; };
 		2CAD8C7A142F1459004F66C1 /* BlowTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C73142F1459004F66C1 /* BlowTorch.m */; };
 		2CAD8C7B142F1459004F66C1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C76142F1459004F66C1 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2CAD8C7C142F1459004F66C1 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C79142F1459004F66C1 /* WebViewJavascriptBridge.m */; };
 		2CAD8C7F142F14D9004F66C1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C7E142F14D9004F66C1 /* Storage.m */; };
 		2CAD8C85142F150E004F66C1 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C82142F150E004F66C1 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CAD8C86142F150E004F66C1 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C84142F150E004F66C1 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -35,12 +35,12 @@
 
 /* Begin PBXFileReference section */
 		2C383556142976EF00528D15 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		2C6D2127142FDF1E0069FA34 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		2C6D2128142FDF1E0069FA34 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		2CAD8C72142F1459004F66C1 /* BlowTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlowTorch.h; sourceTree = "<group>"; };
 		2CAD8C73142F1459004F66C1 /* BlowTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlowTorch.m; sourceTree = "<group>"; };
 		2CAD8C75142F1459004F66C1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		2CAD8C76142F1459004F66C1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		2CAD8C78142F1459004F66C1 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
-		2CAD8C79142F1459004F66C1 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		2CAD8C7D142F14D9004F66C1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		2CAD8C7E142F14D9004F66C1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		2CAD8C81142F150E004F66C1 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ../dependencies/fmdb/src/FMDatabase.h; sourceTree = "<group>"; };
@@ -81,13 +81,22 @@
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
+		2C6D2126142FDF1E0069FA34 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				2C6D2127142FDF1E0069FA34 /* WebViewJavascriptBridge.h */,
+				2C6D2128142FDF1E0069FA34 /* WebViewJavascriptBridge.m */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 		2CAD8C71142F1459004F66C1 /* BlowTorch-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				2CAD8C72142F1459004F66C1 /* BlowTorch.h */,
 				2CAD8C73142F1459004F66C1 /* BlowTorch.m */,
 				2CAD8C74142F1459004F66C1 /* JSONKit */,
-				2CAD8C77142F1459004F66C1 /* WebViewJavascriptBridge */,
+				2C6D2126142FDF1E0069FA34 /* WebViewJavascriptBridge */,
 			);
 			name = "BlowTorch-iOS";
 			path = "../dependencies/BlowTorch/BlowTorch-iOS";
@@ -100,15 +109,6 @@
 				2CAD8C76142F1459004F66C1 /* JSONKit.m */,
 			);
 			path = JSONKit;
-			sourceTree = "<group>";
-		};
-		2CAD8C77142F1459004F66C1 /* WebViewJavascriptBridge */ = {
-			isa = PBXGroup;
-			children = (
-				2CAD8C78142F1459004F66C1 /* WebViewJavascriptBridge.h */,
-				2CAD8C79142F1459004F66C1 /* WebViewJavascriptBridge.m */,
-			);
-			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
 		};
 		2CAD8C80142F1504004F66C1 /* fmdb */ = {
@@ -240,10 +240,10 @@
 				2CE94A331426BF16004D82DC /* AppDelegate.m in Sources */,
 				2CAD8C7A142F1459004F66C1 /* BlowTorch.m in Sources */,
 				2CAD8C7B142F1459004F66C1 /* JSONKit.m in Sources */,
-				2CAD8C7C142F1459004F66C1 /* WebViewJavascriptBridge.m in Sources */,
 				2CAD8C7F142F14D9004F66C1 /* Storage.m in Sources */,
 				2CAD8C85142F150E004F66C1 /* FMDatabase.m in Sources */,
 				2CAD8C86142F150E004F66C1 /* FMResultSet.m in Sources */,
+				2C6D2129142FDF1E0069FA34 /* WebViewJavascriptBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
