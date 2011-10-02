@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C383557142976EF00528D15 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C383556142976EF00528D15 /* libsqlite3.0.dylib */; };
+		2C52345A1437F38900B991B8 /* schema.sql in Resources */ = {isa = PBXBuildFile; fileRef = 2C5234591437F38900B991B8 /* schema.sql */; };
 		2C6D2129142FDF1E0069FA34 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D2128142FDF1E0069FA34 /* WebViewJavascriptBridge.m */; };
 		2CAD8C7A142F1459004F66C1 /* BlowTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C73142F1459004F66C1 /* BlowTorch.m */; };
 		2CAD8C7B142F1459004F66C1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD8C76142F1459004F66C1 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		2C383556142976EF00528D15 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		2C5234591437F38900B991B8 /* schema.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = schema.sql; path = ../../schema.sql; sourceTree = "<group>"; };
 		2C6D2127142FDF1E0069FA34 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		2C6D2128142FDF1E0069FA34 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		2CAD8C72142F1459004F66C1 /* BlowTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlowTorch.h; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		2CE94A281426BF16004D82DC /* StayAccount */ = {
 			isa = PBXGroup;
 			children = (
+				2C5234591437F38900B991B8 /* schema.sql */,
 				2CE94A311426BF16004D82DC /* AppDelegate.h */,
 				2CE94A321426BF16004D82DC /* AppDelegate.m */,
 				2CAD8C7D142F14D9004F66C1 /* Storage.h */,
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE94A2D1426BF16004D82DC /* InfoPlist.strings in Resources */,
+				2C52345A1437F38900B991B8 /* schema.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
