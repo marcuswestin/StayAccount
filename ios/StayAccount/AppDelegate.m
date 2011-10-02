@@ -1,19 +1,18 @@
 #import "AppDelegate.h"
-#import "Storage.h"
 
 @implementation AppDelegate
 
 @synthesize storage;
 
-/* Blow torch app lifecycle
- **************************/
-
-- (void) blowTorchSetup {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     storage = [Storage open];
+    if (!storage) { return NO; }
+    return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
-- (void)handleCommand:(NSString *)command withData:(NSDictionary *)data andCallbackID:(NSString *)callbackID {
-    NSLog(@"handleCommand %@ %@ %@", command, data, callbackID);
+- (void) handleCommand:(NSString *)command data:(NSDictionary *)data responseCallback:(ResponseCallback)responseCallback {
+    if ([command isEqualToString:@"SQL"]) { [storage handleSqlCommand:data responseCallback:responseCallback]; }
+    else { NSLog(@"Error: Unkown command %@ %@", command, data); }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
