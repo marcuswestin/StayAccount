@@ -60,12 +60,14 @@ module.exports = Class(View, function() {
 	}
 	
 	this._startNewActivity = function() {
-		if (!this._activityMenuEl) { this._activityMenuEl = DIV().style({ width:300, background:'red' }) }
-		this._activityMenuEl.appendTo(this._head)
+		this._activityMenuEl = DIV()
+			.style({ position:'absolute', top:headHeight-30, left:8, width:280, border:'10px solid #88aaee', borderRadius:6, background:'#fff', textAlign:'left' })
+			.appendTo(this._head)
+		
 		BT.sql.query('SELECT * FROM activity_types', bind(this, function(err, res) {
 			if (err) { return this._activityMenuEl.text('Error: ' + err) }
 			this._activityMenuEl.append(map(res.results, this, function(result) {
-				return DIV(result.name, { touchstart:bind(this, this._addCurrentActivityWithType, result.id)})
+				return DIV(result.name, { touchstart:bind(this, this._addCurrentActivityWithType, result.id)}).style({ padding:'5px 8px', fontSize:18 })
 			}))
 		}))
 	}
