@@ -1,3 +1,4 @@
+// TODO move this functionality into BlowTorch
 #import "Storage.h"
 
 @implementation Storage
@@ -17,6 +18,7 @@
 
 - (void) handleSqlCommand:(NSDictionary *)data responseCallback:(ResponseCallback)responseCallback {
     if ([data objectForKey:@"getSchema"]) {
+		// TODO Move this into a JS ORM layer
         NSString* filePath = [[NSBundle mainBundle] pathForResource:@"schema" ofType:@"sql"];
         NSString* schema = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
         responseCallback(nil, [NSDictionary dictionaryWithObject:schema forKey:@"schema"]);
