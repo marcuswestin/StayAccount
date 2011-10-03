@@ -6,16 +6,16 @@ document.body.style.fontFamily = 'futura'
 document.body.style.color = '#333'
 
 function startApp() {
-	BlowTorch.send('SQL', { 'query':'SELECT * FROM schema_versions' }, function(err, response) {
+	BT.sql.query('SELECT * FROM schema_versions', function(err, response) {
 		if (err) { setupSchema() }
 		else { displayUI() }
 	})
 }
 
 function setupSchema() {
-	BlowTorch.send('SQL', { getSchema:true }, function(err, response) {
+	BT.send('SQL', { getSchema:true }, function(err, response) {
 		if (err) { return document.body.innerHTML = err }
-		BlowTorch.send('SQL', { update:response.schema }, function(err, response) {
+		BT.sql.update(response.schema, function(err, response) {
 			if (err) { return alert("Could not create database" + err) }
 			displayUI()
 		})
