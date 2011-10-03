@@ -6,3 +6,4 @@
 xcuserdata
 *~.nib/
 build/*
+app.js.ios-build
