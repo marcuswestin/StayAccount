@@ -2,6 +2,9 @@ module.exports = {
 	startApp: startApp
 }
 
+document.body.style.fontFamily = 'futura'
+document.body.style.color = '#333'
+
 function startApp() {
 	BlowTorch.send('SQL', { 'query':'SELECT * FROM schema_versions' }, function(err, response) {
 		if (err) { setupSchema() }
