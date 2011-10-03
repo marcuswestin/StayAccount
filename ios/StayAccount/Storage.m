@@ -6,10 +6,11 @@
 @synthesize database;
 
 + (id) open {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:@"/tmp/tmp.db" error:nil];
-    FMDatabase* database = [FMDatabase databaseWithPath:@"/tmp/tmp.db"];
-    NSLog(@"Opening database");
+    NSString *docsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *dbPath = [docsDirectory stringByAppendingPathComponent:@"database.db"];
+    
+    FMDatabase* database = [FMDatabase databaseWithPath:dbPath];
+    NSLog(@"Opening database %@", dbPath);
     if (![database open]) { return nil; }
     Storage* storage = [Storage alloc];
     storage.database = database;
