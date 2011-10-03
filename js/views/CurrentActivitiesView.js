@@ -14,11 +14,14 @@ var View = require('./View'),
 module.exports = Class(View, function() {
 	
 	var headHeight = 40
+	this._activitiesTable = 'current_activities'
 	
 	this.renderHead = function() {
 		this._head.style({ width:'100%', height:headHeight, position:'fixed', top:0, left:0, background:'#abf', textAlign:'center', boxShadow:'#333 0px 1px 2px' }).append(
 			DIV('current activities').style({ textShadow:'#fff 0 1px 0', fontSize:22, marginTop:3 }),
-			DIV('+', { touchstart:bind(this, this._startNewActivity) }).style({ position:'absolute', top:8, left:8, width:20, height:20, border:'1px outset #fff', borderRadius:4 })
+			DIV('+', { touchstart:bind(this, this._startNewActivity) }).style({ position:'absolute', top:8, left:8, width:20, height:20, border:'1px outset #fff', borderRadius:4 }),
+			DIV('I', { touchstart:bind(this, this._setView, 'completed_intervals') }).style({ position:'absolute', top:8, right:20, width:20, height:20, border:'1px outset #fff', borderRadius:4 }),
+			DIV('A', { touchstart:bind(this, this._setView, 'current_activities') }).style({ position:'absolute', top:8, right:45, width:20, height:20, border:'1px outset #fff', borderRadius:4 })
 		)
 	}
 	
@@ -33,9 +36,14 @@ module.exports = Class(View, function() {
 		
 	}
 	
+	this._setView = function(table) {
+		this._activitiesTable = table
+		this._refreshCurrentActivities()
+	}
+	
 	this._refreshCurrentActivities = function() {
-		BT.sql.query('SELECT ca.id ca_id, ca.start_time ca_start_time, at.name at_name, at.id at_id FROM current_activities ca INNER JOIN activity_types at ON ca.activity_type_id = at.id', bind(this, function(err, res) {
-			if (err) { return }
+		BT.sql.query('SELECT ca.id ca_id, ca.start_time ca_start_time, at.name at_name, at.id at_id FROM '+this._activitiesTable+' ca INNER JOIN activity_types at ON ca.activity_type_id = at.id', bind(this, function(err, res) {
+			if (err) { return this._currentActivities.text("Error: " + err) }
 			this._currentActivities.empty().append(map(res.results, this, function(result) {
 				var dateNode = DIV().style({ fontSize:16, color:'#555' }),
 					nameNode = DIV(result.at_name).style({ textShadow:'#ccc 0 2px 0' }),
@@ -73,7 +81,7 @@ module.exports = Class(View, function() {
 	this._markCurrentActivityDone = function(currentActivityID, startTime, activityTypeID) {
 		var duration = new Date().getTime() - startTime
 		var updates = [
-			'INSERT INTO completed_activities (activity_type_id, start_time, duration) VALUES ('+activityTypeID+', '+startTime+', '+duration+')',
+			'INSERT INTO completed_intervals (activity_type_id, start_time, duration) VALUES ('+activityTypeID+', '+startTime+', '+duration+')',
 			'DELETE FROM current_activities WHERE id=' + currentActivityID
 		]
 		BT.sql.update(updates.join(';'), bind(this, function(err, res) {

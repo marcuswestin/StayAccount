@@ -1,22 +1,12 @@
--- DROP database test
--- CREATE database test
--- USE test
-
--- CREATE TABLE `users` (
--- 	`id` integer PRIMARY KEY AUTOINCREMENT, -- `id` int unsigned PRIMARY KEY,
--- 	-- `email` varchar(256) UNIQUE NOT NULL, -- CHARACTER SET latin1,
--- 	`device_push_id` varchar(256) DEFAULT NULL
--- ) -- DEFAULT CHARSET=utf8
-
-CREATE TABLE `completed_activities` (
+CREATE TABLE `completed_intervals` (
 	`id` integer PRIMARY KEY AUTOINCREMENT, -- `id` bigint unsigned PRIMARY KEY,
 	-- `user_id` int unsigned NOT NULL,
 	-- `device_type_id` mediumint unsigned NOT NULL,
-	`activity_type_id` int unsigned NOT NULL,
-	`start_time` timestamp NOT NULL,
-	`duration` int NOT NULL,
+	`activity_type_id` integer NOT NULL,
+	`start_time` integer NOT NULL,
+	`duration` integer NOT NULL,
 	-- FOREIGN KEY (user_id) REFERENCES users(id),
-	FOREIGN KEY (activity_id) REFERENCES activity_types(id)
+	FOREIGN KEY (activity_type_id) REFERENCES activity_types(id)
 	-- FOREIGN KEY (device_type_id) REFERENCES device_types(id)
 );
 
