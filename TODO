@@ -1,7 +1,13 @@
-NOW
-fix the BlowTorch git submodule reference
-execute sql from the webview and get results back
-create schema in the js
+GRAPHING
+	d3 submodule
+	create button to view graphs
+	render graphs with d3 for all data
 
-LATER
-schema migrations
+DATA
+	schema migrations
+	sql ORM
+	create sql and do migrations in JS
+
+CODE UPDATES
+	dynamic updates to code
+	a/b tests
