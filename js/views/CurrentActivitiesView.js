@@ -38,7 +38,8 @@ module.exports = Class(View, function() {
 			if (err) { return }
 			this._currentActivities.empty().append(map(res.results, this, function(currentActivity) {
 				var dateNode = DIV().style({ fontSize:16, color:'#555' }),
-					node = DIV(currentActivity.name, dateNode).style({ fontSize:20, padding:5, borderBottom:'1px solid #555' })
+					nameNode = DIV(currentActivity.name).style({ textShadow:'#ccc 0 2px 0' }),
+					node = DIV(nameNode, dateNode).style({ fontSize:20, padding:5, borderBottom:'1px solid #555' })
 				setTimeout(function() {
 					time.ago(currentActivity.start_time, function(timeAgo) {
 						dateNode.text('started ' + timeAgo)
