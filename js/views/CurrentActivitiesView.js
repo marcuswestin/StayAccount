@@ -19,7 +19,7 @@ module.exports = Class(View, function() {
 	this.renderHead = function() {
 		this._head.style({ width:'100%', height:headHeight, position:'fixed', top:0, left:0, background:'#abf', textAlign:'center', boxShadow:'#333 0px 1px 2px' }).append(
 			DIV('current activities').style({ textShadow:'#fff 0 1px 0', fontSize:22, marginTop:3 }),
-			DIV('+', { touchstart:bind(this, this._startNewActivity) }).style({ position:'absolute', top:8, left:8, width:20, height:20, border:'1px outset #fff', borderRadius:4 }),
+			DIV('+', { click:bind(this, this._startNewActivity) }).style({ position:'absolute', top:8, left:8, width:20, height:20, border:'1px outset #fff', borderRadius:4 }),
 			DIV('I', { touchstart:bind(this, this._setView, 'completed_intervals') }).style({ position:'absolute', top:8, right:20, width:20, height:20, border:'1px outset #fff', borderRadius:4 }),
 			DIV('A', { touchstart:bind(this, this._setView, 'current_activities') }).style({ position:'absolute', top:8, right:45, width:20, height:20, border:'1px outset #fff', borderRadius:4 })
 		)
@@ -61,18 +61,28 @@ module.exports = Class(View, function() {
 	
 	this._startNewActivity = function() {
 		this._activityMenuEl = DIV()
-			.style({ position:'absolute', top:headHeight-30, left:8, width:280, border:'10px solid #88aaee', borderRadius:6, background:'#fff', textAlign:'left' })
+			.style({ position:'absolute', top:headHeight-30, left:8, width:280, height:420, overflowY:'auto', border:'10px solid #88aaee', borderRadius:6, background:'#fff', textAlign:'left' })
 			.appendTo(this._head)
 		
 		BT.sql.query('SELECT * FROM activity_types', bind(this, function(err, res) {
 			if (err) { return this._activityMenuEl.text('Error: ' + err) }
+			var itemStyle = { padding:'5px 8px', fontSize:18 }
+			this._activityMenuEl.append(DIV('New activity...', { style:itemStyle, click: bind(this, function() {
+				var activityName = prompt('Activity name')
+				BT.sql.update('INSERT INTO activity_types (name) VALUES ("'+activityName+'")', bind(this, function(err, res) {
+					if (err) { return alert('Could not create new activity: ' + err) }
+					BT.sql.query('SELECT last_insert_rowid()', bind(this, function(err, res) {
+						this._addCurrentActivityWithTypeID(res.results[0]['last_insert_rowid()'])
+					}))
+				}))
+			})}))
 			this._activityMenuEl.append(map(res.results, this, function(result) {
-				return DIV(result.name, { touchstart:bind(this, this._addCurrentActivityWithType, result.id)}).style({ padding:'5px 8px', fontSize:18 })
+				return DIV(result.name, { click:bind(this, this._addCurrentActivityWithTypeID, result.id)}).style(itemStyle)
 			}))
 		}))
 	}
 	
-	this._addCurrentActivityWithType = function(activityTypeID) {
+	this._addCurrentActivityWithTypeID = function(activityTypeID) {
 		this._activityMenuEl.remove()
 		BT.sql.update('INSERT INTO current_activities (activity_type_id, start_time) VALUES ('+activityTypeID+','+new Date().getTime()+')', bind(this, function(err, res) {
 			if (err) { return alert("Could not create activity: " + err) }

@@ -12,7 +12,7 @@ CREATE TABLE `completed_intervals` (
 
 CREATE TABLE `current_activities` (
 	`id` integer PRIMARY KEY AUTOINCREMENT,
-	`activity_type_id` mediumint unsigned NOT NULL,
+	`activity_type_id` mediumint unsigned UNIQUE NOT NULL,
 	`start_time` integer NOT NULL
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE `localities` (
 
 CREATE TABLE `activity_types` (
 	`id` integer PRIMARY KEY AUTOINCREMENT, -- `id` int unsigned PRIMARY KEY,
-	`name` varchar(256) NOT NULL -- CHARACTER SET latin1,
+	`name` varchar(256) UNIQUE NOT NULL -- CHARACTER SET latin1,
 );
 
 -- CREATE TABLE `device_types` (
