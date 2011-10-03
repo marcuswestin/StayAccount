@@ -34,15 +34,15 @@ module.exports = Class(View, function() {
 	}
 	
 	this._refreshCurrentActivities = function() {
-		BT.sql.query('SELECT ca.id, ca.start_time, at.name FROM current_activities ca INNER JOIN activity_types at ON ca.activity_type_id = at.id', bind(this, function(err, res) {
+		BT.sql.query('SELECT ca.id ca_id, ca.start_time ca_start_time, at.name at_name, at.id at_id FROM current_activities ca INNER JOIN activity_types at ON ca.activity_type_id = at.id', bind(this, function(err, res) {
 			if (err) { return }
-			this._currentActivities.empty().append(map(res.results, this, function(currentActivity) {
+			this._currentActivities.empty().append(map(res.results, this, function(result) {
 				var dateNode = DIV().style({ fontSize:16, color:'#555' }),
-					nameNode = DIV(currentActivity.name).style({ textShadow:'#ccc 0 2px 0' }),
-					doneButton = DIV('Done', { click:bind(this, this._markCurrentActivityDone, currentActivity.id) }).style({ 'float':'right', fontSize:12, border:'1px outset #ccc', borderRadius:5, padding:'1px 5px', margin:'2px 0' }),
+					nameNode = DIV(result.at_name).style({ textShadow:'#ccc 0 2px 0' }),
+					doneButton = DIV('Done', { click:bind(this, this._markCurrentActivityDone, result.ca_id, result.ca_start_time, result.at_id) }).style({ 'float':'right', fontSize:12, border:'1px outset #ccc', borderRadius:5, padding:'1px 5px', margin:'2px 0' }),
 					node = DIV(doneButton, nameNode, dateNode).style({ fontSize:20, padding:5, borderBottom:'1px solid #555' })
 				setTimeout(function() {
-					time.ago(currentActivity.start_time, function(timeAgo) {
+					time.ago(result.ca_start_time, function(timeAgo) {
 						dateNode.text('started ' + timeAgo)
 					})
 				})
@@ -70,7 +70,15 @@ module.exports = Class(View, function() {
 		}))
 	}
 	
-	this._markCurrentActivityDone = function(currentActivityID) {
-		
+	this._markCurrentActivityDone = function(currentActivityID, startTime, activityTypeID) {
+		var duration = new Date().getTime() - startTime
+		var updates = [
+			'INSERT INTO completed_activities (activity_type_id, start_time, duration) VALUES ('+activityTypeID+', '+startTime+', '+duration+')',
+			'DELETE FROM current_activities WHERE id=' + currentActivityID
+		]
+		BT.sql.update(updates.join(';'), bind(this, function(err, res) {
+			if (err) { return alert("Could not complete activity: " + err) }
+			this._refreshCurrentActivities()
+		}))
 	}
 })

@@ -8,10 +8,10 @@
 -- 	`device_push_id` varchar(256) DEFAULT NULL
 -- ) -- DEFAULT CHARSET=utf8
 
-CREATE TABLE `activities` (
+CREATE TABLE `completed_activities` (
 	`id` integer PRIMARY KEY AUTOINCREMENT, -- `id` bigint unsigned PRIMARY KEY,
-	`user_id` int unsigned NOT NULL,
-	`device_type_id` mediumint unsigned NOT NULL,
+	-- `user_id` int unsigned NOT NULL,
+	-- `device_type_id` mediumint unsigned NOT NULL,
 	`activity_type_id` int unsigned NOT NULL,
 	`start_time` timestamp NOT NULL,
 	`duration` int NOT NULL,
