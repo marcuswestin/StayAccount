@@ -1,3 +1,7 @@
+require('./globals')
+
+var CurrentActivitiesView = require('./views/CurrentActivitiesView')
+
 module.exports = {
 	startApp: startApp
 }
@@ -23,26 +27,5 @@ function setupSchema() {
 }
 
 function displayUI() {
-	var insertButton = BlowTorch.body.appendChild(document.createElement('div')),
-		getButton = BlowTorch.body.appendChild(document.createElement('div')),
-		output = BlowTorch.body.appendChild(document.createElement('div'))
-
-	insertButton.innerHTML = 'insert'
-	getButton.innerHTML = 'get'
-	
-	insertButton.ontouchstart = function() {
-		BlowTorch.send('SQL', { update:'INSERT INTO activity_types (name) VALUES ("test'+new Date().getTime()+'")' }, function(err, response) {
-			if (err) { return output.innerHTML = "Error inserting: " + err }
-			getButton.ontouchstart()
-		})
-	}
-	
-	getButton.ontouchstart = function() {
-		BlowTorch.send('SQL', { query:'SELECT * FROM activity_types'}, function(err, response) {
-			output.innerHTML = JSON.stringify({ err:err, response:response })
-		})
-	}
-	
-	insertButton.ontouchstart()
-	getButton.ontouchstart()
+	var currentActivitiesView = new CurrentActivitiesView().appendTo(BT.body)
 }
