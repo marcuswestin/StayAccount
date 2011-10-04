@@ -1,3 +1,7 @@
+UI
+	prevent dragging from dragging the webview
+	in past activities view, show "started at TIME. Duration: TIME"
+
 GRAPHING
 	d3 submodule
 	create button to view graphs
@@ -11,3 +15,7 @@ DATA
 CODE UPDATES
 	dynamic updates to code
 	a/b tests
+
+GITHUB
+	sync with clover repos
+	remove dom from ui.js
