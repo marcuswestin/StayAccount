@@ -1,6 +1,10 @@
 // TODO move this functionality into BlowTorch
 #import "Storage.h"
 
+@interface Storage (hidden)
+-(void) dumpBackup;
+@end
+
 @implementation Storage
 
 @synthesize database;
@@ -11,9 +15,12 @@
     
     FMDatabase* database = [FMDatabase databaseWithPath:dbPath];
     NSLog(@"Opening database %@", dbPath);
+    
     if (![database open]) { return nil; }
+
     Storage* storage = [Storage alloc];
     storage.database = database;
+    [storage dumpBackup];
     return storage;
 }
 
@@ -46,6 +53,26 @@
     } else {
         NSLog(@"WARNING: Unrecognized Storage command %@", data);
     }
+}
+
+@end
+
+@implementation Storage (hidden)
+
+-(void) dumpBackup {
+    FMResultSet* results = [database executeQuery:@"SELECT * FROM completed_intervals"];
+    NSMutableArray* intervalsList = [[NSMutableArray alloc] init];
+    while ([results next]) {
+        [intervalsList addObject:[results resultDict]];
+    }
+    NSString *docsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *fileName = [NSString stringWithFormat:@"backup-%d.bak", (long)[[NSDate date] timeIntervalSince1970]];
+    NSString *backupPath = [docsDirectory stringByAppendingPathComponent:fileName];
+    
+    NSLog(@"Backing up to %@", backupPath);
+    [intervalsList writeToFile:backupPath atomically:YES];
+    
+    NSLog(@"JSON: %@", [intervalsList JSONString]);
 }
 
 @end
