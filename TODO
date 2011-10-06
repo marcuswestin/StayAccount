@@ -1,6 +1,5 @@
 UI
 	prevent dragging from dragging the webview
-	in past activities view, show "started at TIME. Duration: TIME"
 
 GRAPHING
 	d3 submodule
