@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "Request.h"
 
 @implementation AppDelegate
 
@@ -7,11 +8,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     storage = [Storage open];
     if (!storage) { return NO; }
+    [Request setURLBase:@"http://marcuswest.in"];
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void) handleCommand:(NSString *)command data:(NSDictionary *)data responseCallback:(ResponseCallback)responseCallback {
     if ([command isEqualToString:@"SQL"]) { [storage handleSqlCommand:data responseCallback:responseCallback]; }
+    if ([command isEqualToString:@"Backup"]) { [storage backup:responseCallback]; }
     else { NSLog(@"Error: Unkown command %@ %@", command, data); }
 }
 

@@ -1,6 +1,7 @@
 require('./globals')
 
-var CurrentActivitiesView = require('./views/CurrentActivitiesView')
+var CurrentActivitiesView = require('./views/CurrentActivitiesView'),
+	time = require('std/time')
 
 module.exports = {
 	startApp: startApp
@@ -26,6 +27,15 @@ function setupSchema() {
 	})
 }
 
+var intervalID
 function displayUI() {
 	var currentActivitiesView = new CurrentActivitiesView().appendTo(BT.body)
+	backupToCloud()
+	if (!intervalID) { intervalID = setInterval(backupToCloud, 3 * time.hour) }
+}
+
+function backupToCloud() {
+	BT.send('Backup', function(err, response) {
+		BT.alert({ err:err, res:response })
+	})
 }

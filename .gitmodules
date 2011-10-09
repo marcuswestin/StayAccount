@@ -7,3 +7,6 @@
 [submodule "node_modules/d3"]
 	path = node_modules/d3
 	url = https://github.com/mbostock/d3.git
+[submodule "dependencies/asi-http-request"]
+	path = dependencies/asi-http-request
+	url = https://github.com/pokeb/asi-http-request.git

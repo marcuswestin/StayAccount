@@ -7,6 +7,8 @@
 @property (nonatomic, strong) FMDatabase* database;
 
 + (id) open;
++ (NSDictionary*) getDeviceInfo;
 - (void) handleSqlCommand:(NSDictionary*)data responseCallback:(ResponseCallback)responseCallback;
+- (void) backup:(ResponseCallback)responseCallback;
 
 @end
