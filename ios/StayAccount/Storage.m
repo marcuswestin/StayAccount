@@ -3,7 +3,6 @@
 #import "Request.h"
 
 @interface Storage (hidden)
--(void) dumpBackup;
 -(NSArray*) getDump;
 +(NSString*) getPath:(NSString*)path;
 @end
@@ -22,7 +21,6 @@
     
     Storage* storage = [Storage alloc];
     storage.database = database;
-    [storage dumpBackup];
     return storage;
 }
 
@@ -85,16 +83,6 @@
 @end
 
 @implementation Storage (hidden)
-
--(void) dumpBackup {
-    NSArray* intervalsList = [self getDump];
-    NSString *docsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *fileName = [NSString stringWithFormat:@"backup-%d.bak", (long)[[NSDate date] timeIntervalSince1970]];
-    NSString *backupPath = [docsDirectory stringByAppendingPathComponent:fileName];
-    
-    NSLog(@"Backing up to %@", backupPath);
-    [intervalsList writeToFile:backupPath atomically:YES];
-}
 
 -(NSArray*) getDump {
     FMResultSet* results = [database executeQuery:@"SELECT * FROM completed_intervals"];
